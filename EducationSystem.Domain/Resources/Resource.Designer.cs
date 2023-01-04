@@ -106,6 +106,15 @@ namespace EducationSystem.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to هرگونه عملیات روی نقش‌های پیشفرض مجاز نمی‌باشد..
+        /// </summary>
+        public static string AnyOperationsOnDefaultRolesAreNotAllowed {
+            get {
+                return ResourceManager.GetString("AnyOperationsOnDefaultRolesAreNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to آذربایجان.
         /// </summary>
         public static string Azerbaijan {
@@ -588,6 +597,15 @@ namespace EducationSystem.Domain.Resources {
         public static string ResetPasswordTokenNotFound {
             get {
                 return ResourceManager.GetString("ResetPasswordTokenNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to این نقش به تعدادی کاربر اختصاص داده شده است..
+        /// </summary>
+        public static string RoleContainsSomeUsers {
+            get {
+                return ResourceManager.GetString("RoleContainsSomeUsers", resourceCulture);
             }
         }
         

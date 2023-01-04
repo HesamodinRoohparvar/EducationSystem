@@ -132,6 +132,9 @@
   <data name="Afghanistan" xml:space="preserve">
     <value>افغانستان</value>
   </data>
+  <data name="AnyOperationsOnDefaultRolesAreNotAllowed" xml:space="preserve">
+    <value>هرگونه عملیات روی نقش‌های پیشفرض مجاز نمی‌باشد.</value>
+  </data>
   <data name="Azerbaijan" xml:space="preserve">
     <value>آذربایجان</value>
   </data>
@@ -293,6 +296,9 @@
   </data>
   <data name="ResetPasswordTokenNotFound" xml:space="preserve">
     <value>توکن بازیابی رمز عبور یافت نشد.</value>
+  </data>
+  <data name="RoleContainsSomeUsers" xml:space="preserve">
+    <value>این نقش به تعدادی کاربر اختصاص داده شده است.</value>
   </data>
   <data name="RoleId" xml:space="preserve">
     <value>شناسه نقش</value>
