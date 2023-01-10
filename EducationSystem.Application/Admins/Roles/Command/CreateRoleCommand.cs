@@ -1,8 +1,10 @@
-﻿using EducationSystem.Application.Common.Interfaces;
+﻿using EducationSystem.Application.Common.Excensions;
+using EducationSystem.Application.Common.Interfaces;
 using EducationSystem.Domain.Entities;
 using EducationSystem.Domain.Resources;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace EducationSystem.Application.Admins.Roles.Command
 {
@@ -51,20 +53,39 @@ namespace EducationSystem.Application.Admins.Roles.Command
             _dbContext = dbContext;
         }
 
-        public Task<CreateRoleCommandResponse> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
+        public async Task<CreateRoleCommandResponse> Handle(CreateRoleCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var isDuplicated = await _dbContext.Roles
+                .AnyAsync(x => x.Title == request.Title);
+
+            if (isDuplicated)
+            {
+                throw new DuplicateException(Resource.DuplicateTitle);
+            }
+
+            var entity = new Role
+            {
+                Title = request.Title,
+                Description = request.Description,
+                RolePermissions = CreateRolePermissionList(request.PermissionIds)
+            };
+
+            _dbContext.Roles.Add(entity);
+
+            await _dbContext.SaveChangesAsync();
+
+            return new CreateRoleCommandResponse(entity.Id);
         }
 
         public List<RolePermission> CreateRolePermissionList(List<string> permissionIds)
         {
             var rolePermissions = new List<RolePermission>();
 
-            foreach(var permissionId in permissionIds)
+            foreach (var permissionId in permissionIds)
             {
                 var splitedPermissionId = permissionId.Split(":");
 
-                if(splitedPermissionId.Length == 3)
+                if (splitedPermissionId.Length == 3)
                 {
                     var area = splitedPermissionId[0];
                     var controller = splitedPermissionId[1];

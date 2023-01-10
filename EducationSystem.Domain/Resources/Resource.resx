@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AcademicBranchContiansSomeAcadmeicFields" xml:space="preserve">
+    <value>این شاخه تحصیلی به تعدادی رشته تحصیلی اختصاص داده شده است ...</value>
+  </data>
+  <data name="AcademicBranchId" xml:space="preserve">
+    <value>شناسه شاخه تحصیلی</value>
+  </data>
+  <data name="AcademicBranchNotFound" xml:space="preserve">
+    <value>شاخه تحصیلی یافت نشد.</value>
+  </data>
   <data name="AcademicField" xml:space="preserve">
     <value>رشته تحصیلی</value>
+  </data>
+  <data name="AcademicFieldId" xml:space="preserve">
+    <value>شناسه رشته تحصیلی</value>
+  </data>
+  <data name="AcademicFieldNotFound" xml:space="preserve">
+    <value>رشته تحصیلی یافت نشد ...</value>
   </data>
   <data name="AccountIsInActive" xml:space="preserve">
     <value>متاسفانه حساب شما غیرفعال شده است. لطفا با پشتیبانی تماس بگیرید.</value>
@@ -143,6 +158,12 @@
   </data>
   <data name="Christian" xml:space="preserve">
     <value>مسیحی</value>
+  </data>
+  <data name="CourseId" xml:space="preserve">
+    <value>شناسه درس</value>
+  </data>
+  <data name="CourseNotFound" xml:space="preserve">
+    <value>درس یافت نشد ...</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>ایجاد</value>
@@ -209,6 +230,9 @@
   </data>
   <data name="FluentValidationInvalidMobileNumberError" xml:space="preserve">
     <value>'{PropertyName}' وارد شده معتبر نمی‌باشد.</value>
+  </data>
+  <data name="FluentValidationInvalidTimeError" xml:space="preserve">
+    <value>'{PropertyName}' وارد شده معتبر نمی‌باشد و باید بصورت ساعت:دقیقه:ثانیه ارسال شود.</value>
   </data>
   <data name="ForbiddenError" xml:space="preserve">
     <value>شما دسترسی لازم برای استفاده از این بخش را ندارید. در صورتی که دارای دسترسی هستید و این خطا برای شما به نمایش در آمده است؛ لطفا با مالک سرویس تماس بگیرید.</value>
@@ -309,9 +333,6 @@
   <data name="RoleNotFound" xml:space="preserve">
     <value>نقش یافت نشد.</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
   <data name="Student" xml:space="preserve">
     <value>دانشجو</value>
   </data>
@@ -321,11 +342,23 @@
   <data name="Teacher" xml:space="preserve">
     <value>استاد</value>
   </data>
+  <data name="TermId" xml:space="preserve">
+    <value>شناسه ترم تحصیلی</value>
+  </data>
+  <data name="TermNotFound" xml:space="preserve">
+    <value>ترم تحصیلی یافت نشد ...</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>ساعت کلاس</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>عنوان</value>
   </data>
   <data name="ToDate" xml:space="preserve">
     <value>تاریخ پایان</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>توکن</value>
   </data>
   <data name="Turkey" xml:space="preserve">
     <value>ترکیه</value>

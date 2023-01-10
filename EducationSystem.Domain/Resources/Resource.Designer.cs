@@ -61,11 +61,56 @@ namespace EducationSystem.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to این شاخه تحصیلی به تعدادی رشته تحصیلی اختصاص داده شده است ....
+        /// </summary>
+        public static string AcademicBranchContiansSomeAcadmeicFields {
+            get {
+                return ResourceManager.GetString("AcademicBranchContiansSomeAcadmeicFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شناسه شاخه تحصیلی.
+        /// </summary>
+        public static string AcademicBranchId {
+            get {
+                return ResourceManager.GetString("AcademicBranchId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شاخه تحصیلی یافت نشد..
+        /// </summary>
+        public static string AcademicBranchNotFound {
+            get {
+                return ResourceManager.GetString("AcademicBranchNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to رشته تحصیلی.
         /// </summary>
         public static string AcademicField {
             get {
                 return ResourceManager.GetString("AcademicField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شناسه رشته تحصیلی.
+        /// </summary>
+        public static string AcademicFieldId {
+            get {
+                return ResourceManager.GetString("AcademicFieldId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to رشته تحصیلی یافت نشد ....
+        /// </summary>
+        public static string AcademicFieldNotFound {
+            get {
+                return ResourceManager.GetString("AcademicFieldNotFound", resourceCulture);
             }
         }
         
@@ -138,6 +183,24 @@ namespace EducationSystem.Domain.Resources {
         public static string Christian {
             get {
                 return ResourceManager.GetString("Christian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شناسه درس.
+        /// </summary>
+        public static string CourseId {
+            get {
+                return ResourceManager.GetString("CourseId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to درس یافت نشد ....
+        /// </summary>
+        public static string CourseNotFound {
+            get {
+                return ResourceManager.GetString("CourseNotFound", resourceCulture);
             }
         }
         
@@ -336,6 +399,15 @@ namespace EducationSystem.Domain.Resources {
         public static string FluentValidationInvalidMobileNumberError {
             get {
                 return ResourceManager.GetString("FluentValidationInvalidMobileNumberError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{PropertyName}&apos; وارد شده معتبر نمی‌باشد و باید بصورت ساعت:دقیقه:ثانیه ارسال شود..
+        /// </summary>
+        public static string FluentValidationInvalidTimeError {
+            get {
+                return ResourceManager.GetString("FluentValidationInvalidTimeError", resourceCulture);
             }
         }
         
@@ -637,15 +709,6 @@ namespace EducationSystem.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string String1 {
-            get {
-                return ResourceManager.GetString("String1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to دانشجو.
         /// </summary>
         public static string Student {
@@ -673,6 +736,33 @@ namespace EducationSystem.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to شناسه ترم تحصیلی.
+        /// </summary>
+        public static string TermId {
+            get {
+                return ResourceManager.GetString("TermId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ترم تحصیلی یافت نشد ....
+        /// </summary>
+        public static string TermNotFound {
+            get {
+                return ResourceManager.GetString("TermNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ساعت کلاس.
+        /// </summary>
+        public static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to عنوان.
         /// </summary>
         public static string Title {
@@ -687,6 +777,15 @@ namespace EducationSystem.Domain.Resources {
         public static string ToDate {
             get {
                 return ResourceManager.GetString("ToDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to توکن.
+        /// </summary>
+        public static string Token {
+            get {
+                return ResourceManager.GetString("Token", resourceCulture);
             }
         }
         
