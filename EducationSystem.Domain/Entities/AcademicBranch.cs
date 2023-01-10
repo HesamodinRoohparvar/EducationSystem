@@ -10,6 +10,6 @@
         public int CreatedBy { get; set; }
         public int LastModifiedBy { get; set; }
         public bool IsDeleted { get; set; }
-        public List<AcademicField> AcademicField { get; set; }
+        public List<AcademicField> AcademicFields { get; set; }
     }
 }
