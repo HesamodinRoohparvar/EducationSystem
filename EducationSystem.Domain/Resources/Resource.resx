@@ -342,12 +342,15 @@
   <data name="Teacher" xml:space="preserve">
     <value>استاد</value>
   </data>
+<<<<<<< HEAD
   <data name="TermCourseId" xml:space="preserve">
     <value>شناسه درس ترم جاری</value>
   </data>
   <data name="TermCourseNotFound" xml:space="preserve">
     <value>درس ترم مورد نظر یافت نشد ...</value>
   </data>
+=======
+>>>>>>> edd18d2421889097035bcbcf8f319922f0a15ea5
   <data name="TermId" xml:space="preserve">
     <value>شناسه ترم تحصیلی</value>
   </data>
