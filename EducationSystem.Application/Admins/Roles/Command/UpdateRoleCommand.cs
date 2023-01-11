@@ -66,7 +66,7 @@ namespace EducationSystem.Application.Admins.Roles.Command
                 throw new NotFoundException(Resource.RoleNotFound);
             }
 
-            if (DefaultRoleName.List.Contains(entity.Title))
+            if (DefaultRoleNames.List.Contains(entity.Title))
             {
                 throw new OperationNotAllowedException(Resource.AnyOperationsOnDefaultRolesAreNotAllowed);
             }

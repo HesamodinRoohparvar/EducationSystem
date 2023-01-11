@@ -47,8 +47,8 @@ namespace EducationSystem.Infrastructure.Services
                 {
                     FirsName = "علی",
                     LastName = "یاری",
-                    UserName = nameof(DefaultRoleName.Admin).ToLower(),
-                    PasswordHash = PasswordHasher.Hash(nameof(DefaultRoleName.Admin)),
+                    UserName = nameof(DefaultRoleNames.Admin).ToLower(),
+                    PasswordHash = PasswordHasher.Hash(nameof(DefaultRoleNames.Admin)),
                     Nationality = Nationality.Iran,
                     IdentificationCode = "0372020202",
                     Religion = Religion.Islam,
@@ -66,10 +66,10 @@ namespace EducationSystem.Infrastructure.Services
                     IsActive = true,
                     Role = new Domain.Entities.Role
                     {
-                        Title = DefaultRoleName.Admin,
+                        Title = DefaultRoleNames.Admin,
                         Description = Resource.DefaultRole,
                         RolePermissions = _controllerDiscoveryService
-                        .GetAllSecuredActions(AreaName.Admin, PolicyNames.DynamicPermission)
+                        .GetAllSecuredActions(AreaNames.Admin, PolicyNames.DynamicPermission)
                         .Select(x=> new Domain.Entities.RolePermission
                         {
                             Action = x.Name,

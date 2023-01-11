@@ -41,7 +41,7 @@ namespace EducationSystem.Application.Admins.Permissions
         public Task<List<PermissionListGroup>> Handle(GetPermissionListQuery request, CancellationToken cancellationToken)
         {
             var result = _controllerDiscoveryService
-                .GetAllSecuredControllers(AreaName.Admin, PolicyNames.DynamicPermission)
+                .GetAllSecuredControllers(AreaNames.Admin, PolicyNames.DynamicPermission)
                 .Select(x => new PermissionListGroup
                 {
                     Value = x.Id,

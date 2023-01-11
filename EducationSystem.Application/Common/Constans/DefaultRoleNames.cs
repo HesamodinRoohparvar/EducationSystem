@@ -1,6 +1,6 @@
 ﻿namespace EducationSystem.Application.Common.Constans
 {
-    public class DefaultRoleName
+    public class DefaultRoleNames
     {
         public const string Admin = "مدیر";
         public const string Teacher = "استاد";

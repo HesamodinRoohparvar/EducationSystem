@@ -1,6 +1,6 @@
 ﻿namespace EducationSystem.Application.Common.Constans
 {
-    public class AreaName
+    public class AreaNames
     {
         public const string Admin = nameof(Admin);
         public const string Teacher = nameof(Teacher);
