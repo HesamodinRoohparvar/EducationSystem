@@ -23,7 +23,7 @@ namespace EducationSystem.Domain
         public string? WorkPhoneNumber { get; set; }
         public string UserName { get; set; }
         public string PasswordHash { get; set; }
-        public string Email { get; set; }
+        public string? Email { get; set; }
         public byte AccessFailedCount { get; set; }
         public DateTimeOffset? LockoutEndAt { get; set; }
         public DateTime? GraduationDate { get; set; }

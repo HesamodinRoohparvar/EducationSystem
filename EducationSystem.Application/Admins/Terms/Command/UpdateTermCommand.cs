@@ -1,10 +1,10 @@
-﻿using EducationSystem.Application.Common.Excensions;
+﻿using MediatR;
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using EducationSystem.Domain.Resources;
+using EducationSystem.Application.Common.Excensions;
 using EducationSystem.Application.Common.Exceptions;
 using EducationSystem.Application.Common.Interfaces;
-using EducationSystem.Domain.Resources;
-using FluentValidation;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace EducationSystem.Application.Admins.Terms.Command
 {
