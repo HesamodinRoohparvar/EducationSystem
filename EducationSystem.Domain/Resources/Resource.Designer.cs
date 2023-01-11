@@ -396,6 +396,15 @@ namespace EducationSystem.Domain.Resources {
         /// <summary>
         ///   Looks up a localized string similar to &apos;{PropertyName}&apos; وارد شده معتبر نمی‌باشد..
         /// </summary>
+        public static string FluentValidationInvalidCourseError {
+            get {
+                return ResourceManager.GetString("FluentValidationInvalidCourseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{PropertyName}&apos; وارد شده معتبر نمی‌باشد..
+        /// </summary>
         public static string FluentValidationInvalidMobileNumberError {
             get {
                 return ResourceManager.GetString("FluentValidationInvalidMobileNumberError", resourceCulture);

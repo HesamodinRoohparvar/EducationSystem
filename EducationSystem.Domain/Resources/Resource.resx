@@ -228,6 +228,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="FluentValidationInvalidCourseError" xml:space="preserve">
+    <value>'{PropertyName}' وارد شده معتبر نمی‌باشد.</value>
+  </data>
   <data name="FluentValidationInvalidMobileNumberError" xml:space="preserve">
     <value>'{PropertyName}' وارد شده معتبر نمی‌باشد.</value>
   </data>
