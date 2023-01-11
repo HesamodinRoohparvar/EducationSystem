@@ -2,6 +2,7 @@
 using EducationSystem.Application.Common.Exceptions;
 using EducationSystem.Application.Common.Extensions;
 using EducationSystem.Application.Common.Interfaces;
+using EducationSystem.Application.Security;
 using EducationSystem.Application.Validators;
 using EducationSystem.Domain.Enumerations;
 using EducationSystem.Domain.Resources;
@@ -10,14 +11,15 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace EducationSystem.Application.Teachers.Users.Command
+namespace EducationSystem.Application.Students.Users.Command
 {
     #region command
 
-    public record UpdateUserinformationCommand(
+    public record UpdateStudentInformationCommand(
         int Id,
         string FirstName,
         string LastName,
+        string NewPassword,
         Nationality Nationality,
         string IdentificationCode,
         Religion Religion,
@@ -36,9 +38,9 @@ namespace EducationSystem.Application.Teachers.Users.Command
 
     #region validator
 
-    public class UpdateUserinformationCommandValidator : AbstractValidator<UpdateUserinformationCommand>
+    public class UpdateStudentInformationCommandValidator : AbstractValidator<UpdateStudentInformationCommand>
     {
-        public UpdateUserinformationCommandValidator()
+        public UpdateStudentInformationCommandValidator()
         {
             RuleFor(x => x.Id)
             .GreaterThan(0)
@@ -53,6 +55,12 @@ namespace EducationSystem.Application.Teachers.Users.Command
                 .NotEmpty()
                 .MaximumLength(25)
                 .WithName(Resource.LastName);
+
+            RuleFor(x => x.NewPassword)
+                .NotEmpty()
+                .Length(8, 50)
+                .When(x => !string.IsNullOrEmpty(x.NewPassword), ApplyConditionTo.AllValidators)
+                .WithName(Resource.Password);
 
             RuleFor(x => x.Nationality)
                 .NotEmpty()
@@ -104,11 +112,6 @@ namespace EducationSystem.Application.Teachers.Users.Command
                 .WithMessage("{PropertyName} باید ده رقم باشد.")
                 .WithName(Resource.PostalCode);
 
-            RuleFor(x => x.Photo)
-                .NotEmpty()
-                .NotNull()
-                .WithName(Resource.Photo);
-
             RuleFor(x => x.FatherName)
                 .NotEmpty()
                 .MaximumLength(25)
@@ -130,20 +133,20 @@ namespace EducationSystem.Application.Teachers.Users.Command
 
     #region handler
 
-    public class UpdateUserinformationCommandHandler : IRequestHandler<UpdateUserinformationCommand, Unit>
+    public class UpdateStudentInformationCommandHandler : IRequestHandler<UpdateStudentInformationCommand, Unit>
     {
         private readonly IAppDbContext _dbContext;
         private readonly IFileManagerService _fileManager;
         private readonly ICurrentUserService _currentUser;
-        public UpdateUserinformationCommandHandler(IAppDbContext dbContext, IFileManagerService fileManager
+
+        public UpdateStudentInformationCommandHandler(IAppDbContext dbContext, IFileManagerService fileManager
             , ICurrentUserService currentUser)
         {
             _dbContext = dbContext;
             _fileManager = fileManager;
             _currentUser = currentUser;
         }
-
-        public async Task<Unit> Handle(UpdateUserinformationCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateStudentInformationCommand request, CancellationToken cancellationToken)
         {
             var entity = await _dbContext.Users
                 .FindAsync(_currentUser.UserId);
@@ -164,7 +167,7 @@ namespace EducationSystem.Application.Teachers.Users.Command
                 }
             }
 
-            if ( entity.MobileNumber != request.MobileNumber)
+            if (entity.MobileNumber != request.MobileNumber)
             {
                 var isIdentificationCode = await _dbContext.Users
                     .AnyAsync(x => x.MobileNumber == request.MobileNumber);
@@ -200,10 +203,20 @@ namespace EducationSystem.Application.Teachers.Users.Command
             entity.Email = request.Email.ToLower();
             entity.Address = request.Address;
             entity.PostalCode = request.PostalCode;
-            entity.Photo = await _fileManager.SaveFileAsync(request.Photo);
             entity.FatherName = request.FatherName;
             entity.WorkAddress = request.WorkAddress;
             entity.WorkPhoneNumber = request.WorkPhoneNumber;
+
+            if (request.Photo != null)
+            {
+                entity.Photo = await _fileManager
+                    .UpdateFileAsync(request.Photo, entity.Photo);
+            }
+
+            if (request.NewPassword != null)
+            {
+                entity.PasswordHash = PasswordHasher.Hash(request.NewPassword);
+            }
 
             await _dbContext.SaveChangesAsync();
 

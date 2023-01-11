@@ -11,11 +11,11 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
-namespace EducationSystem.Application.Admins.Users.Commands
+namespace EducationSystem.Application.Teachers.Users.Command
 {
     #region command
 
-    public record UpdateUserCommand(
+    public record UpdateTeacherInformationCommand(
         int Id,
         string FirstName,
         string LastName,
@@ -24,27 +24,23 @@ namespace EducationSystem.Application.Admins.Users.Commands
         string IdentificationCode,
         Religion Religion,
         string BirthDate,
-        string MobileNubmer,
+        string MobileNumber,
         string HomeNumber,
-        string Email,
         string Address,
         string PostalCode,
         IFormFile Photo,
         string FatherName,
-        string FatherPhoneNumber,
         string WorkAddress,
         string WorkPhoneNumber,
-        int RoleId,
-        int AcademicFieldId,
-        bool IsActive) : IRequest;
+        string Email) : IRequest;
 
     #endregion
 
     #region validator
 
-    public class UpdateUserCommandValidator : AbstractValidator<UpdateUserCommand>
+    public class UpdateTeacherInformationCommandValidator : AbstractValidator<UpdateTeacherInformationCommand>
     {
-        public UpdateUserCommandValidator()
+        public UpdateTeacherInformationCommandValidator()
         {
             RuleFor(x => x.Id)
             .GreaterThan(0)
@@ -85,7 +81,7 @@ namespace EducationSystem.Application.Admins.Users.Commands
                 .NotEmpty()
                 .WithName(Resource.BirthDate);
 
-            RuleFor(x => x.MobileNubmer)
+            RuleFor(x => x.MobileNumber)
                 .NotEmpty()
                 .ValidMobileNumber()
                 .MaximumLength(11)
@@ -121,11 +117,6 @@ namespace EducationSystem.Application.Admins.Users.Commands
                 .MaximumLength(25)
                 .WithName(Resource.FatherName);
 
-            RuleFor(x => x.FatherPhoneNumber)
-                .ValidMobileNumber()
-                .MaximumLength(11)
-                .WithName(Resource.FatherPhoneNumber);
-
             RuleFor(x => x.WorkAddress)
                 .MaximumLength(800)
                 .WithName(Resource.WorkAddress);
@@ -135,35 +126,31 @@ namespace EducationSystem.Application.Admins.Users.Commands
                 .Matches(@"\d{11}")
                 .WithMessage("{PropertyName} باید یازده رقم باشد.")
                 .WithName(Resource.WorkPhoneNumber);
-
-            RuleFor(x => x.RoleId)
-                .GreaterThan(0)
-                .WithName(Resource.RoleId);
-
-            RuleFor(x => x.AcademicFieldId)
-                .GreaterThan(0)
-                .WithName(Resource.AcademicField);
         }
     }
 
     #endregion
 
-    #region handler 
+    #region handler
 
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Unit>
+    public class UpdateTeacherInformationCommandHandler : IRequestHandler<UpdateTeacherInformationCommand, Unit>
     {
         private readonly IAppDbContext _dbContext;
-        private readonly IFileManagerService _fileManagerService;
+        private readonly IFileManagerService _fileManager;
+        private readonly ICurrentUserService _currentUser;
 
-        public UpdateUserCommandHandler(IAppDbContext dbContext, IFileManagerService fileManagerService)
+        public UpdateTeacherInformationCommandHandler(IAppDbContext dbContext, IFileManagerService fileManager
+            , ICurrentUserService currentUser)
         {
             _dbContext = dbContext;
-            _fileManagerService = fileManagerService;
+            _fileManager = fileManager;
+            _currentUser = currentUser;
         }
 
-        public async Task<Unit> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(UpdateTeacherInformationCommand request, CancellationToken cancellationToken)
         {
-            var entity = await _dbContext.Users.FindAsync(request.Id);
+            var entity = await _dbContext.Users
+                .FindAsync(_currentUser.UserId);
 
             if (entity == null)
             {
@@ -181,10 +168,10 @@ namespace EducationSystem.Application.Admins.Users.Commands
                 }
             }
 
-            if (request.MobileNubmer != entity.MobileNumber)
+            if ( entity.MobileNumber != request.MobileNumber)
             {
                 var isIdentificationCode = await _dbContext.Users
-                    .AnyAsync(x => x.MobileNumber == request.MobileNubmer);
+                    .AnyAsync(x => x.MobileNumber == request.MobileNumber);
 
                 if (isIdentificationCode)
                 {
@@ -212,22 +199,18 @@ namespace EducationSystem.Application.Admins.Users.Commands
             entity.IdentificationCode = request.IdentificationCode;
             entity.Religion = request.Religion;
             entity.BirthDate = request.BirthDate.ToDateTime();
-            entity.MobileNumber = request.MobileNubmer;
+            entity.MobileNumber = request.MobileNumber;
             entity.HomeNumber = request.HomeNumber;
             entity.Email = request.Email.ToLower();
             entity.Address = request.Address;
             entity.PostalCode = request.PostalCode;
             entity.FatherName = request.FatherName;
-            entity.FatherPhoneNumber = request.FatherPhoneNumber;
             entity.WorkAddress = request.WorkAddress;
             entity.WorkPhoneNumber = request.WorkPhoneNumber;
-            entity.RoleId = request.RoleId;
-            entity.AcademicFieldId = request.AcademicFieldId;
-            entity.IsActive = request.IsActive;
 
-            if (request.Photo != null)
+            if(request.Photo != null)
             {
-                entity.Photo = await _fileManagerService
+                entity.Photo = await _fileManager
                     .UpdateFileAsync(request.Photo, entity.Photo);
             }
 
