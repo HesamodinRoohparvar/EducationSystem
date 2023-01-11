@@ -333,8 +333,17 @@
   <data name="RoleNotFound" xml:space="preserve">
     <value>نقش یافت نشد.</value>
   </data>
+  <data name="Score" xml:space="preserve">
+    <value>نمره</value>
+  </data>
   <data name="Student" xml:space="preserve">
     <value>دانشجو</value>
+  </data>
+  <data name="StudentCourseId" xml:space="preserve">
+    <value>شناسه درس دانشجو</value>
+  </data>
+  <data name="StudentCourseNotFound" xml:space="preserve">
+    <value>درس انتخابی دانشجو یافت نشد ....</value>
   </data>
   <data name="System" xml:space="preserve">
     <value>سامانه</value>

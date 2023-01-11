@@ -24,4 +24,9 @@
     <ProjectReference Include="..\EducationSystem.Domain\EducationSystem.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Students\" />
+    <Folder Include="Teachers\" />
+  </ItemGroup>
+
 </Project>

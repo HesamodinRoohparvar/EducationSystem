@@ -709,11 +709,38 @@ namespace EducationSystem.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to نمره.
+        /// </summary>
+        public static string Score {
+            get {
+                return ResourceManager.GetString("Score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to دانشجو.
         /// </summary>
         public static string Student {
             get {
                 return ResourceManager.GetString("Student", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شناسه درس دانشجو.
+        /// </summary>
+        public static string StudentCourseId {
+            get {
+                return ResourceManager.GetString("StudentCourseId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to درس انتخابی دانشجو یافت نشد .....
+        /// </summary>
+        public static string StudentCourseNotFound {
+            get {
+                return ResourceManager.GetString("StudentCourseNotFound", resourceCulture);
             }
         }
         
