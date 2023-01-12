@@ -12,7 +12,6 @@
         public int CourseId { get; set; }
         public User Teacher { get; set; }
         public int TeacherId { get; set; }
-        public int StudentId { get; set; }
         public List<StudentCourse> StudentCourses { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? LastModifiedAt { get; set; }
